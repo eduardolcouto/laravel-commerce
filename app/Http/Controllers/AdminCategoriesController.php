@@ -22,4 +22,30 @@ class AdminCategoriesController extends Controller
         $categories = $this->category->all();
         return view('categories',compact('categories'));
     }
+    
+    public function create(){
+        return 'create';
+    }
+    
+    public function store(Request $request){
+        return 'store';
+    }
+    
+     public function edit(\CodeCommerce\Category $category){
+        return 'edit';
+    }
+    
+     public function update(Request $request, \CodeCommerce\Category $category){
+        return 'update';
+    }
+    
+     public function destroy(\CodeCommerce\Category $category){
+        return 'destroy';
+    }
+    
+     public function delete(Request $request, \CodeCommerce\Category $category){
+        return 'delete';
+    }
+    
+ 
 }

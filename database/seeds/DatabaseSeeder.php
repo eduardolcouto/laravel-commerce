@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         // $this->call(UserTableSeeder::class);
+        
+        factory(\CodeCommerce\Category::class,10)->create();
+        factory(\CodeCommerce\Product::class,10)->create();
 
         Model::reguard();
     }

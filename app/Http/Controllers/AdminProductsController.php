@@ -23,4 +23,28 @@ class AdminProductsController extends Controller
 
         return view('products',compact('products'));
     }
+    
+    public function create(){
+        return 'create';
+    }
+    
+    public function store(){
+        return 'store';
+    }
+    
+     public function edit(\CodeCommerce\Product $product){
+        return 'edit';
+    }
+    
+     public function update(Request $request, \CodeCommerce\Product $product){
+        return 'update';
+    }
+    
+     public function destroy(\CodeCommerce\Product $product){
+        return 'destroy';
+    }
+    
+     public function delete(Request $request, \CodeCommerce\Product $product){
+        return 'delete';
+    }
 }
