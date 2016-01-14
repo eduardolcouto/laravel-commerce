@@ -1,8 +1,7 @@
 /nbproject/private/
-=======
-/nbproject/private/
 .idea/
 /nbproject/
 /vendor
 .env
- /nbproject/project.properties
+/nbproject/project.properties
+.phpintel/

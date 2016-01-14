@@ -43,9 +43,10 @@ class AdminProductsController extends Controller
     
      public function update(Requests\ProductRequest $request, \CodeCommerce\Product $product)
      {
-         dd($request->all());
-         $product->update($request->all());
-         return redirect()->route('products.index');
+        $product->featured = null;
+        $product->recommend = null;
+        $product->update($request->all());
+        return redirect()->route('products.index');
      }
     
      public function destroy(\CodeCommerce\Product $product)
