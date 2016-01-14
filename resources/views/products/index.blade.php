@@ -2,6 +2,8 @@
 
 @section('content')
 <h1>Products</h1>
+<a href="{{ route('products.create') }}" class="btn btn-primary">Create New Product</a>
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -22,8 +24,20 @@
             <td>{{$product->name}}</td>
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
-            <td>{{$product->featured}}</td>
-            <td>{{$product->recommend}}</td>
+            <td>
+                @if($product->featured)
+                    YES
+                @ELSE
+                    NO
+                @endif
+            </td>
+            <td>
+                @if($product->recommend)
+                    YES
+                @ELSE
+                    NO
+                @endif
+            </td>
             <td>
             <a href="{{route('products.edit',['id'=>$product->id])}}">Edit</a>
             <a href="{{route('products.destroy',['id'=>$product->id])}}">Delete</a>
