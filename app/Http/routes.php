@@ -25,7 +25,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('edit/{category}',['as'=>'categories.edit', 'uses'=>'AdminCategoriesController@edit']);
         Route::put('update/{category}',['as'=>'categories.update', 'uses'=>'AdminCategoriesController@update']);
         Route::get('destroy/{category}',['as'=>'categories.destroy', 'uses'=>'AdminCategoriesController@destroy']);
-        Route::delete('delete/{category}',['as'=>'categories.delete', 'uses'=>'AdminCategoriesController@delete']);
     });
     
     Route::group(['prefix'=>'products'],function(){     
@@ -35,7 +34,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('edit/{product}',['as'=>'products.edit', 'uses'=>'AdminProductsController@edit']);
         Route::put('update/{product}',['as'=>'products.update', 'uses'=>'AdminProductsController@update']);
         Route::get('destroy/{product}',['as'=>'products.destroy', 'uses'=>'AdminProductsController@destroy']);
-        Route::delete('delete/{product}',['as'=>'products.delete', 'uses'=>'AdminProductsController@delete']);
     });
 
 });

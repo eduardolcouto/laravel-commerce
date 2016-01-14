@@ -6,7 +6,6 @@ use CodeCommerce\Category;
 use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
 
 class AdminCategoriesController extends Controller
 {
@@ -20,32 +19,36 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         $categories = $this->category->all();
-        return view('categories',compact('categories'));
+        return view('categories.index',compact('categories'));
     }
     
-    public function create(){
-        return 'create';
+    public function create()
+    {
+        return view('categories.create');
     }
     
-    public function store(Request $request){
-        return 'store';
+    public function store(Requests\CategoryRequest $request)
+    {
+        $category = $this->category->fill($request->all());
+        $category->save();
+        return redirect()->route('categories.index');
     }
     
-     public function edit(\CodeCommerce\Category $category){
-        return 'edit';
+     public function edit(\CodeCommerce\Category $category)
+     {
+        return view('categories.edit',compact('category'));
     }
     
-     public function update(Request $request, \CodeCommerce\Category $category){
-        return 'update';
-    }
+     public function update(Requests\CategoryRequest $request, \CodeCommerce\Category $category)
+     {
+         $category->update($request->all());
+        return redirect()->route('categories.index');
+     }
     
-     public function destroy(\CodeCommerce\Category $category){
-        return 'destroy';
-    }
-    
-     public function delete(Request $request, \CodeCommerce\Category $category){
-        return 'delete';
-    }
-    
- 
+     public function destroy(\CodeCommerce\Category $category)
+     {
+         $category->delete();
+         return redirect()->route('categories.index');
+     }
+
 }

@@ -21,30 +21,37 @@ class AdminProductsController extends Controller
     {
         $products = $this->product->all();
 
-        return view('products',compact('products'));
+        return view('products.index',compact('products'));
     }
     
-    public function create(){
-        return 'create';
+    public function create()
+    {
+        return view('products.create');
     }
     
-    public function store(){
-        return 'store';
+    public function store(Requests\ProductRequest $request)
+    {
+        $product = $this->product->fill($request->all());
+        $product->save();
+        return redirect()->route('products.index');
     }
     
-     public function edit(\CodeCommerce\Product $product){
-        return 'edit';
+     public function edit(\CodeCommerce\Product $product)
+     {
+        return view('products.edit',compact('product'));
     }
     
-     public function update(Request $request, \CodeCommerce\Product $product){
-        return 'update';
-    }
+     public function update(Requests\ProductRequest $request, \CodeCommerce\Product $product)
+     {
+         dd($request->all());
+         $product->update($request->all());
+         return redirect()->route('products.index');
+     }
     
-     public function destroy(\CodeCommerce\Product $product){
-        return 'destroy';
-    }
-    
-     public function delete(Request $request, \CodeCommerce\Product $product){
-        return 'delete';
-    }
+     public function destroy(\CodeCommerce\Product $product)
+     {
+         $product->delete();
+         return redirect()->route('products.index');
+     }
+
 }
