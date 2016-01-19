@@ -26,6 +26,13 @@
         {!! Form::label('description','Description:') !!}
         {!! Form::textarea('description',null, ['class'=>'form-control']) !!}
     </div>
+
+     <!-- Category Form Input -->
+    <div class="form-group">
+        {!! Form::label('category_id','Category:') !!}
+        {!! Form::select('category_id',$categories, null, ['class'=>'form-control']) !!}
+    </div>
+
     <!-- Price Form Input -->
         <div class="form-group">
             {!! Form::label('price','Price:') !!}

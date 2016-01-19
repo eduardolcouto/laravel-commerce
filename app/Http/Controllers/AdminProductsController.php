@@ -3,6 +3,7 @@
 namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Product;
+use CodeCommerce\Category;
 use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
@@ -19,14 +20,16 @@ class AdminProductsController extends Controller
 
     public function index()
     {
-        $products = $this->product->all();
+        $products = $this->product->paginate(10);
 
         return view('products.index',compact('products'));
     }
     
-    public function create()
+    public function create(Category $category)
     {
-        return view('products.create');
+        $categories = $category->lists('name','id');
+
+        return view('products.create', compact('categories'));
     }
     
     public function store(Requests\ProductRequest $request)
@@ -36,9 +39,10 @@ class AdminProductsController extends Controller
         return redirect()->route('products.index');
     }
     
-     public function edit(\CodeCommerce\Product $product)
+     public function edit(\CodeCommerce\Product $product, Category $category)
      {
-        return view('products.edit',compact('product'));
+        $categories = $category->lists('name','id');
+        return view('products.edit',compact('product','categories'));
     }
     
      public function update(Requests\ProductRequest $request, \CodeCommerce\Product $product)

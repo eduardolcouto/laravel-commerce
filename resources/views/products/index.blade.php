@@ -11,6 +11,7 @@
             <th>NAME</th>
             <th>DESCRIPTION</th>
             <th>PRICE</th>
+            <th>CATEGORY</th>
             <th>FEATURED</th>
             <th>RECOMMEND</th>
             <th>ACTION</th>
@@ -22,8 +23,9 @@
 
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
-            <td>{{$product->description}}</td>
+            <td>{{str_limit($product->description,35)}}</td>
             <td>{{$product->price}}</td>
+            <td>{{$product->category->name}}</td>
             <td>
                 @if($product->featured)
                     YES
@@ -45,4 +47,5 @@
         </tr>
      @endforeach
     </tbody></table>
+    {!! $products->render() !!}
 @endsection

@@ -19,7 +19,7 @@
 
             <td>{{$category->id}}</td>
             <td>{{$category->name}}</td>
-            <td>{{$category->description}}</td>
+            <td>{{str_limit($category->description,100)}}</td>
             <td>
             <a href="{{route('categories.edit',['id'=>$category->id])}}">Edit</a>
             <a href="{{route('categories.destroy',['id'=>$category->id])}}">Delete</a>
@@ -27,4 +27,5 @@
         </tr>
      @endforeach
     </tbody></table>
+    {!! $categories->render() !!}
 @endsection
