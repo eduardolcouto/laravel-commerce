@@ -12,4 +12,9 @@ class Product extends Model
     {
     	return $this->belongsTo(\CodeCommerce\Category::class);
     }
+
+    public function images()
+    {
+    	return $this->hasMany(\CodeCommerce\ProductImage::class);
+    }
 }
