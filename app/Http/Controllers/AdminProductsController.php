@@ -8,6 +8,7 @@ use CodeCommerce\Category;
 use Illuminate\Http\Request;
 
 use Storage;
+use Image;
 
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
@@ -76,17 +77,38 @@ class AdminProductsController extends Controller
      {
         $image = $request->file('image');
         $productImage = $productImage::create(['product_id'=>$product->id,'extension'=>$image->getClientOriginalExtension()]);
+
         Storage::disk('public_local')->put(
                 $productImage->id.'.'.$productImage->extension, 
-               file_get_contents($image->getRealPath())
+               file_get_contents($image)
         );
+        $thumb = Image::make(public_path('uploads').'/'.$productImage->id.'.'.$productImage->extension)->resize(100,null, function($a){
+        $a->aspectRatio();
+        });
+
+        $thumb->save(public_path('uploads/thumb').'/'.$productImage->id.'.'.$productImage->extension);
+
+        //Serviço Amazon S3
+        //Storage::disk('s3')->put(
+        //        'uploads/'.$productImage->id.'.'.$productImage->extension, 
+        //       file_get_contents($image),
+        //       'public'
+        //);
+
         //$image->move(public_path('upload'),$imageName);
         return redirect()->route('products.images',$product->id);
      }
 
      public function destroyImages(ProductImage $productImage)
      {
-        Storage::disk('public_local')->delete($productImage->id.'.'.$productImage->extension);
+        if(file_exists(public_path('uploads').'/'.$productImage->id.'.'.$productImage->extension))
+        {
+            Storage::disk('public_local')->delete($productImage->id.'.'.$productImage->extension);
+            Storage::disk('public_local')->delete('thumb/'.$productImage->id.'.'.$productImage->extension);
+        }
+        //Serviço Amazon S3
+        //Storage::disk('s3')->delete('uploads/'.$productImage->id.'.'.$productImage->extension);
+        
 
         $product = $productImage->product;
         $productImage->delete();

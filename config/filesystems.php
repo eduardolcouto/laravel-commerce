@@ -69,10 +69,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key'    => 'AKIAIM42MZBA33T36V3Q',
+            'secret' => 'bU3mccpDffsuH7/SLOpDMwnuYF2SZ4y/U0HaNdJD',
+            'region' => 'sa-east-1',
+            'bucket' => 'elc.system.estudo.s3',
         ],
 
         'rackspace' => [

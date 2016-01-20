@@ -44,3 +44,10 @@ Route::group(['prefix'=>'admin'],function(){
     });
 
 });
+
+Route::get('teste',function(){
+    $image = Image::make(public_path('uploads').'/3.jpg')->resize(null,200, function($a){
+        $a->aspectRatio();
+    });
+    $image->save(public_path('uploads').'/3_thumb.jpg');
+});
