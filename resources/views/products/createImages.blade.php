@@ -25,7 +25,7 @@
 
     <!-- Submit Form Input -->
     <div class="form-group">
-        {!! Form::submit('Upload Images', ['class'=>'form-control btn btn-primary']) !!}
+        {!! Form::submit('Upload', ['class'=>'form-control btn btn-primary']) !!}
     </div>
 
 
