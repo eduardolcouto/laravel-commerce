@@ -5,6 +5,7 @@ namespace CodeCommerce\Http\Controllers;
 use CodeCommerce\Product;
 use CodeCommerce\ProductImage;
 use CodeCommerce\Category;
+use CodeCommerce\Tag;
 use Illuminate\Http\Request;
 
 use Storage;
@@ -38,8 +39,13 @@ class AdminProductsController extends Controller
     
     public function store(Requests\ProductRequest $request)
     {
+        $tagIds = $this->getTagIds($request->get('tags'));
+
         $product = $this->product->fill($request->all());
         $product->save();
+
+        $product->tags()->sync($tagIds);
+
         return redirect()->route('products.index');
     }
     
@@ -53,7 +59,12 @@ class AdminProductsController extends Controller
      {
         $product->featured = null;
         $product->recommend = null;
+
+        $tagIds = $this->getTagIds($request->get('tags'));
+
         $product->update($request->all());
+        $product->tags()->sync($tagIds);
+        
         return redirect()->route('products.index');
      }
     
@@ -82,8 +93,9 @@ class AdminProductsController extends Controller
                 $productImage->id.'.'.$productImage->extension, 
                file_get_contents($image)
         );
+
         $thumb = Image::make(public_path('uploads').'/'.$productImage->id.'.'.$productImage->extension)->resize(100,null, function($a){
-        $a->aspectRatio();
+            $a->aspectRatio();
         });
 
         $thumb->save(public_path('uploads/thumb').'/'.$productImage->id.'.'.$productImage->extension);
@@ -116,5 +128,15 @@ class AdminProductsController extends Controller
         return redirect()->route('products.images',['id'=>$product->id]);
      }
 
+    private function getTagIds($tags)
+    {
+        $tags = array_filter(array_map('trim',explode(',',$tags)));
+        $tagIds = []; 
+        foreach ($tags as $tagName) {
+            $tagIds[] = Tag::firstOrCreate(['name'=>$tagName])->id;
+        }
+
+        return $tagIds;
+    }
 
 }

@@ -51,6 +51,12 @@
             {!! Form::checkbox('recommend',true) !!}
         </div>
 
+    <!-- Tags Form Input -->
+        <div class="form-group">
+            {!! Form::label('tags','Tags:') !!}
+            {!! Form::textarea('tags',null, ['class'=>'form-control']) !!}
+        </div>
+
 
     <!-- Submit Form Input -->
     <div class="form-group">
