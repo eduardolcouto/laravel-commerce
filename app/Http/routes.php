@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
 
 Route::patterns(['category'=>'[0-9]+','product'=>'[0-9]+' ]);
 
@@ -43,11 +41,4 @@ Route::group(['prefix'=>'admin'],function(){
 
     });
 
-});
-
-Route::get('teste',function(){
-    $image = Image::make(public_path('uploads').'/3.jpg')->resize(null,200, function($a){
-        $a->aspectRatio();
-    });
-    $image->save(public_path('uploads').'/3_thumb.jpg');
 });

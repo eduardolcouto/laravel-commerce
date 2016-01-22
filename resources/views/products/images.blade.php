@@ -19,8 +19,8 @@
 
             <td>{{$image->id}}</td>
             <td>
-                <a href="{{url('/uploads/'.$image->id.'.'.$image->extension)}}" data-lightbox="roadtrip">
-                 <img src="{{url('/uploads/thumb/'.$image->id.'.'.$image->extension)}}" alt="" width="120" class="img-thumbnail">
+                <a href="{{url('/uploads/'.$image->imageName)}}" data-lightbox="roadtrip">
+                 <img src="{{url('/uploads/thumb/'.$image->imageName)}}" alt="" width="120" class="img-thumbnail">
                  </a> 
                 <!--<img src="https://s3-sa-east-1.amazonaws.com/elc.system.estudo.s3/uploads/{{$image->id.'.'.$image->extension}}" alt="" width="120" class="img-thumbnail">-->
 

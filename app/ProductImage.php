@@ -13,4 +13,14 @@ class ProductImage extends Model
     {
     	return $this->belongsTo(\CodeCommerce\Product::class);
     }
+
+    public function getImageNameAttribute()
+    {
+        return $this->id .'.'. $this->extension;
+    }
+
+    public function getImageName()
+    {
+        return $this->id .'.'. $this->extension;
+    }
 }

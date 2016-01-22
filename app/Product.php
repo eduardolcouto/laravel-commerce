@@ -27,4 +27,6 @@ class Product extends Model
    	{
    		return implode(', ',$this->tags->lists('name')->all());
    	}
+
+    
 }

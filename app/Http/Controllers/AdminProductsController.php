@@ -90,15 +90,15 @@ class AdminProductsController extends Controller
         $productImage = $productImage::create(['product_id'=>$product->id,'extension'=>$image->getClientOriginalExtension()]);
 
         Storage::disk('public_local')->put(
-                $productImage->id.'.'.$productImage->extension, 
+                $productImage->imageName, 
                file_get_contents($image)
         );
 
-        $thumb = Image::make(public_path('uploads').'/'.$productImage->id.'.'.$productImage->extension)->resize(100,null, function($a){
+        $thumb = Image::make(public_path('uploads').'/'.$productImage->imageName)->resize(100,null, function($a){
             $a->aspectRatio();
         });
 
-        $thumb->save(public_path('uploads/thumb').'/'.$productImage->id.'.'.$productImage->extension);
+        $thumb->save(public_path('uploads/thumb').'/'.$productImage->imageName);
 
         //Serviço Amazon S3
         //Storage::disk('s3')->put(
@@ -113,10 +113,10 @@ class AdminProductsController extends Controller
 
      public function destroyImages(ProductImage $productImage)
      {
-        if(file_exists(public_path('uploads').'/'.$productImage->id.'.'.$productImage->extension))
+        if(file_exists(public_path('uploads').'/'.$productImage->imageName))
         {
-            Storage::disk('public_local')->delete($productImage->id.'.'.$productImage->extension);
-            Storage::disk('public_local')->delete('thumb/'.$productImage->id.'.'.$productImage->extension);
+            Storage::disk('public_local')->delete($productImage->imageName);
+            Storage::disk('public_local')->delete('thumb/'.$productImage->imageName);
         }
         //Serviço Amazon S3
         //Storage::disk('s3')->delete('uploads/'.$productImage->id.'.'.$productImage->extension);
