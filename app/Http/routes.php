@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
+Route::group([],function(){
+    Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
+    Route::get('/category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
+});
+
 
 Route::patterns(['category'=>'[0-9]+','product'=>'[0-9]+' ]);
 

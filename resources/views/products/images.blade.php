@@ -1,5 +1,13 @@
 @extends('app')
 
+@section('filesCss')
+    <link href="{{ asset('/libs/lightbox/css/lightbox.css') }}" rel="stylesheet">
+@endsection
+
+@section('filesJs')
+    <script src="{{ asset('/libs/lightbox/js/lightbox.js') }}"></script>
+@endsection
+
 @section('content')
 <h1>Images of {{$product->name}}</h1>
 <a href="{{ route('products.images.create',$product->id) }}" class="btn btn-primary">Upload Image</a>
@@ -35,3 +43,4 @@
     <a href="{{route('products.index')}}" class="btn btn-default">Voltar</a>
 
 @endsection
+

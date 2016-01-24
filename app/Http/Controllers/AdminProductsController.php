@@ -88,7 +88,6 @@ class AdminProductsController extends Controller
      {
         $image = $request->file('image');
         $productImage = $productImage::create(['product_id'=>$product->id,'extension'=>$image->getClientOriginalExtension()]);
-
         Storage::disk('public_local')->put(
                 $productImage->imageName, 
                file_get_contents($image)

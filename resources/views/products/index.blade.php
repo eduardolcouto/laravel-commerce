@@ -23,22 +23,14 @@
 
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
-            <td>{{str_limit($product->description,35)}}</td>
-            <td>{{$product->price}}</td>
+            <td>{{$product->present()->descriptionShort}}</td>
+            <td>{{$product->present()->priceFormatted}}</td>
             <td>{{$product->category->name}}</td>
             <td>
-                @if($product->featured)
-                    YES
-                @ELSE
-                    NO
-                @endif
+                {{ $product->present()->statusFeatured }}
             </td>
             <td>
-                @if($product->recommend)
-                    YES
-                @ELSE
-                    NO
-                @endif
+                {{ $product->present()->statusRecommend }}
             </td>
             <td>
             <a href="{{route('products.edit',['id'=>$product->id])}}" class="btn btn-warning btn-sm">Edit</a>

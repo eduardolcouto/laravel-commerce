@@ -3,10 +3,16 @@
 namespace CodeCommerce;
 
 use Illuminate\Database\Eloquent\Model;
+use Laracasts\Presenter\PresentableTrait;
 
 class ProductImage extends Model
 {
     //
+    
+    protected $presenter = '\CodeCommerce\Http\Presenters\ImagePresenter';
+    
+    use PresentableTrait;
+    
     protected $fillable = ['product_id','extension'];
 
     public function product()
@@ -19,8 +25,4 @@ class ProductImage extends Model
         return $this->id .'.'. $this->extension;
     }
 
-    public function getImageName()
-    {
-        return $this->id .'.'. $this->extension;
-    }
 }
