@@ -16,8 +16,8 @@ class ProductPresenter extends Presenter {
     
     public function priceFormatted()
     {
-        $fmt = numfmt_create( 'pt_BR', \NumberFormatter::CURRENCY );
-        return numfmt_format_currency($fmt, $this->price , "BRL");
+        $fmt = new \NumberFormatter( 'pt_BR', \NumberFormatter::CURRENCY );
+        return $fmt->format($this->price);
     }
     
     public function statusFeatured()
