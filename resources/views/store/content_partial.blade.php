@@ -39,11 +39,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-<<<<<<< HEAD
-                    @if($recommend->present()->imageFullName)
-=======
                         @if($recommend->present()->imageFullName)
->>>>>>> 2cc71b63ac9682a046581037286048e27da2c5a4
                             <img src="{{asset('uploads/thumb/'.$recommend->present()->imageFullName)}}" alt="" />
                         @else
                             <img src="{{asset('images/no-img.jpg')}}" alt="" />
