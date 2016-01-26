@@ -10,7 +10,7 @@ class ProductPresenter extends Presenter {
             return $this->images->first()->id . '.' . $this->images->first()->extension;
         }
         
-        return '';
+        return false;
        
     }
     
