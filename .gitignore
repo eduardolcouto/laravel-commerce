@@ -6,3 +6,4 @@
 /nbproject/project.properties
 .phpintel/
 public/uploads/*
+node_modules/
