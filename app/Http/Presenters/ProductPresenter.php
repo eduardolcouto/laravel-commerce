@@ -10,14 +10,13 @@ class ProductPresenter extends Presenter {
             return $this->images->first()->id . '.' . $this->images->first()->extension;
         }
         
-        return '';
+        return false;
        
     }
     
     public function priceFormatted()
     {
-        $fmt = new \NumberFormatter( 'pt_BR', \NumberFormatter::CURRENCY );
-        return $fmt->format($this->price);
+        return "R$ ".$this->price;
     }
     
     public function statusFeatured()

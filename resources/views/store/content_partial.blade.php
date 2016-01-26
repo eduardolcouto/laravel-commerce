@@ -6,7 +6,12 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{asset('uploads/thumb/'.$featured->present()->imageFullName)}}" alt="" />
+                        
+                        @if($featured->present()->imageFullName)
+                            <img src="{{asset('uploads/thumb/'.$featured->present()->imageFullName)}}" alt="" />
+                        @else
+                            <img src="{{asset('images/no-img.jpg')}}" alt="" />
+                        @endif
                         <h2>{{$featured->present()->priceFormatted}}</h2>
                         <p>{{$featured->name}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-crosshairs"></i>Mais detalhes</a>
@@ -34,7 +39,11 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{asset('uploads/thumb/'.$recommend->present()->imageFullName)}}" alt="" width="200"/>
+                    @if($recommend->present()->imageFullName)
+                            <img src="{{asset('uploads/thumb/'.$recommend->present()->imageFullName)}}" alt="" />
+                        @else
+                            <img src="{{asset('images/no-img.jpg')}}" alt="" />
+                        @endif
                         <h2>{{$recommend->present()->priceFormatted}}</h2>
                         <p>{{$recommend->name}}</p>
                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-crosshairs"></i>Mais detalhes</a>
