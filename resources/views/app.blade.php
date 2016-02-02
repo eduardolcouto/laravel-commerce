@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ elixir('css/all.css') }}" rel="stylesheet">
 	@yield('filesCss')
 
 	<!-- Fonts -->
@@ -63,8 +63,10 @@
 
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	-->
+	<script src="{{elixir('js/all.js')}}"></script>
 	@yield('filesJs')
 </body>
 </html>

@@ -1,11 +1,12 @@
 @extends('app')
 
 @section('filesCss')
-    <link href="{{ asset('/libs/lightbox/css/lightbox.css') }}" rel="stylesheet">
+    <link href="{{ elixir('css/lightbox.css') }}" rel="stylesheet">
 @endsection
 
 @section('filesJs')
-    <script src="{{ asset('/libs/lightbox/js/lightbox.js') }}"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="{{ elixir('js/lightbox.js') }}"></script>
 @endsection
 
 @section('content')

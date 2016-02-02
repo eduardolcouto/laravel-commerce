@@ -12,5 +12,43 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.styles([
+		'animate.css',
+		'bootstrap.min.css',
+		'font-awesome.min.css',
+		'main.css',
+		'prettyPhoto.css',
+		'price-range.css',
+		'responsive.css',
+    ],'public/css/all.css');
+
+    mix.styles([
+    	'lightbox.css',
+    ], 'public/css/lightbox.css');
+
+    mix.scripts([
+		'bootstrap.min.js',
+		'contact.js',
+		'gmaps.js',
+		'html5shiv.js',
+		'jquery.js',
+		'jquery.prettyPhoto.js',
+		'jquery.scrollUp.min.js',
+		'main.js',
+		'price-range.js',
+	],'public/js/all.js');
+
+	mix.scripts([
+		'lightbox.js'
+	],'public/js/lightbox.js');
+
+    mix.version([
+    	'public/css/all.css',
+    	'public/js/all.js',
+    	'public/css/lightbox.css',
+    	'public/js/lightbox.js'
+    ]);
+
+    mix.copy('resources/assets/images', 'public/build/images');
+    mix.copy('resources/assets/fonts', 'public/build/fonts');
 });
