@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="col-sm-9 padding-right">
-	<h2 class="title text-center">Products of Category {{ $category->name }}</h2>
-	    @include('store.partial.products',['products' => $category->products])
+	<h2 class="title text-center">Products of Tag {{ $tag->name }}</h2>
+	    @include('store.partial.products',['products' => $tag->products])
 </div>
 @stop

@@ -1,9 +1,9 @@
 @extends('store.store')
 
 @section('categories')
-	@include('store.categories_partial')
+	@include('store.partial.categories')
 @stop
 
 @section('content')
-    @include('store.content_partial')
+    @include('store.partial.home_content')
 @stop

@@ -18,9 +18,22 @@ class StoreController extends Controller
 
     	return view('store.index',compact('categories','pFeatureds','pRecommends'));
     }
+    
     public function categoryProducts(\CodeCommerce\Category $category)
     {
        $categories = Category::all();
        return view('store.category_products',compact('category','categories'));
+    }
+
+    public function product(\CodeCommerce\Product $product)
+    {
+        $categories = Category::all();
+        return view('store.product',compact('product','categories'));
+    }
+
+    public function tagProducts(\CodeCommerce\Tag $tag)
+    {
+        $categories = Category::all();
+        return view('store.tag_products',compact('tag','categories'));
     }
 }

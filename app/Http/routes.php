@@ -14,6 +14,8 @@
 Route::group([],function(){
     Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
     Route::get('/category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
+    Route::get('/product/{product}', ['as'=>'show.product','uses'=>'StoreController@product']);
+    Route::get('/tag/{tag}', ['as'=>'show.tag.products','uses'=>'StoreController@tagProducts']);
 });
 
 

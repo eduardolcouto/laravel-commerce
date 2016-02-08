@@ -13,13 +13,8 @@ class Tag extends Model
    		return $this->belongsToMany(\CodeCommerce\Product::class);
    	}
 
-   	public function getNameAttribute($value)
-   	{
-   		return $value;
-   	}
-
    	public function setNameAttribute($value)
    	{	
-   		$this->attributes['name'] = htmlentities(strtolower($value));
+   		$this->attributes['name'] = strtolower($value);
    	}
 }

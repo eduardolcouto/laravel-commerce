@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
          $router->model('category', 'CodeCommerce\Category');
          $router->model('product', 'CodeCommerce\Product');
          $router->model('productImage', 'CodeCommerce\ProductImage');
+         $router->model('tag', 'CodeCommerce\Tag');
     }
 
     /**

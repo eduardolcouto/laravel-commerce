@@ -7,10 +7,9 @@ class ProductPresenter extends Presenter {
     public function imageFullName()
     {
         if(count($this->images)){
-            return $this->images->first()->id . '.' . $this->images->first()->extension;
+            return asset('uploads/thumb/'.$this->images->first()->id . '.' . $this->images->first()->extension);
         }
-        
-        return false;
+        return asset('images/no-img.jpg');
        
     }
     
