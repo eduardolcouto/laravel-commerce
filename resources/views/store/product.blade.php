@@ -34,7 +34,7 @@
                 <p>{{$product->description}}</p>
                 <span>
                     <span>{{$product->present()->priceFormatted}}</span>
-                        <a href="#" class="btn btn-fefault cart">
+                        <a href="{{route('cart.add',['id' => $product->id])}}" class="btn btn-fefault cart">
                             <i class="fa fa-shopping-cart"></i>
                             Adicionar no Carrinho
                         </a>

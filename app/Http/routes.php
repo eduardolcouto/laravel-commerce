@@ -13,9 +13,14 @@
 
 Route::group([],function(){
     Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
-    Route::get('/category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
-    Route::get('/product/{product}', ['as'=>'show.product','uses'=>'StoreController@product']);
-    Route::get('/tag/{tag}', ['as'=>'show.tag.products','uses'=>'StoreController@tagProducts']);
+    Route::get('category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
+    Route::get('product/{product}', ['as'=>'show.product','uses'=>'StoreController@product']);
+    Route::get('tag/{tag}', ['as'=>'show.tag.products','uses'=>'StoreController@tagProducts']);
+    
+    Route::get('cart', ['as'=>'cart','uses'=>'CartController@index']);
+    Route::get('cart/add/{id}', ['as'=>'cart.add','uses'=>'CartController@add']);
+    Route::get('cart/destroy/{id}', ['as'=>'cart.destroy','uses'=>'CartController@destroy']);
+
 });
 
 

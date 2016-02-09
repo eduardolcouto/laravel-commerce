@@ -16,10 +16,10 @@ elixir(function(mix) {
 		'animate.css',
 		'bootstrap.min.css',
 		'font-awesome.min.css',
-		'main.css',
 		'prettyPhoto.css',
 		'price-range.css',
 		'responsive.css',
+		'main.css',
     ],'public/css/all.css');
 
     mix.styles([
