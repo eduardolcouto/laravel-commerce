@@ -22,6 +22,8 @@ Route::group([],function(){
     Route::get('cart/remove/{id}', ['as'=>'cart.remove','uses'=>'CartController@remove']);
     Route::get('cart/destroy/{id}', ['as'=>'cart.destroy','uses'=>'CartController@destroy']);
 
+    Route::get('checkout/order-place', ['as'=>'checkout.orderPlace','uses'=>'CheckoutController@place']);
+
 });
 
 

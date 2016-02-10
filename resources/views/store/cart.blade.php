@@ -74,7 +74,7 @@
 						<td colspan="6">
 							<div class="pull-right">
 								<spam>R$ {{$cart->getTotal()}}</spam>
-								<a href="" class="btn btn-success">Fechar a conta</a>
+								<a href="{{route('checkout.orderPlace')}}" class="btn btn-success">Fechar a conta</a>
 							</div>
 						</td>
 					</tr>
