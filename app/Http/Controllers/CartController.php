@@ -35,7 +35,23 @@ class CartController extends Controller
 
         $cart = $this->getCart();
 
-        $cart->add($product->id, $product->name, $product->price);
+        $image = !empty($product->images)? $product->images->first()->imageName : null;
+
+        $cart->add($product->id, $product->name, $product->price, $image);
+
+        Session::set('cart',$cart);
+         
+        return redirect()->route('cart');
+
+    }
+
+     public function remove($id)
+    {
+        $product = Product::find($id);
+
+        $cart = $this->getCart();
+
+        $cart->remove($product->id);
 
         Session::set('cart',$cart);
          
@@ -47,7 +63,7 @@ class CartController extends Controller
     {
     
         $cart = $this->getCart();
-        $cart->remove($id);
+        $cart->destroy($id);
 
         Session::set('cart',$cart);
          

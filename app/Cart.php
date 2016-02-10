@@ -10,13 +10,14 @@ class Cart
 		$this->items = [];
 	}
 
-	public function add($id,$name,$price)
+	public function add($id,$name,$price, $image)
 	{
 		$this->items += [
 			$id => [
 				'qtd' => isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd']++ : 1,
 				'price' => $price,
-				'name' => $name
+				'name' => $name,
+				'image' => $image
 			]
 		];
 
@@ -25,8 +26,23 @@ class Cart
 
 	public function remove($id)
 	{
+		if ( $this->items[$id]['qtd'] > 1 ){
+			$this->items[$id]['qtd']--;
+		}
+		else{
+			$this->destroy($id);
+		} 
+		
+
+		return $this->items;
+	}
+
+
+	public function destroy($id)
+	{
 		unset($this->items[$id]);
 	}
+
 	public function all()
 	{
 		return $this->items;

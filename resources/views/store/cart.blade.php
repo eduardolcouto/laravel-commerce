@@ -19,8 +19,12 @@
 				@forelse($cart->all() as $k => $item)
 					<tr>
 						<td class="cart_product">
-							<a href="#">
-								imagem
+							<a href="{{route('show.product',['id'=>$k])}}">
+								@if(isset($item['image']))
+									<img src="{{asset('uploads/thumb').'/'.$item['image']}}" alt="" width="80">
+								@else
+									<img src="{{asset('images/no-img.jpg')}}" alt="" width="80">
+								@endif
 							</a>
 						</td>
 						<td class="cart_description">
@@ -34,11 +38,22 @@
 						</td>
 						<td class="cart_quantity">
 							{{$item['qtd']}}
+							<div class="btn-group-vertical" role="group" aria-label="...">
+								<button class="btn btn-default btn-xs" onclick="Cart.add({{$k}})">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+								<button class="btn btn-default btn-xs" onclick="Cart.remove({{$k}})"> 
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+							</div>	
+
 						</td>
 						<td class="cart_total">
+		
 							<p class="cart_total_price">
-								R$ {{$item['price'] * $item['qtd']}}
-							</p>
+									R$ {{$item['price'] * $item['qtd']}}
+							</p>						
+							
 						</td>
 						<td class="cart_delete">
 							<a href="{{route('cart.destroy',['id' => $k ])}}" class="cart_quantity_delete">
@@ -69,3 +84,7 @@
 	</div>
 </section>
 @stop
+
+@section('filesJs')
+	<script src="{{elixir('js/cart.js')}}"></script>
+@endsection

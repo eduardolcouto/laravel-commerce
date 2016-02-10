@@ -27,16 +27,18 @@ elixir(function(mix) {
     ], 'public/css/lightbox.css');
 
     mix.scripts([
+		'jquery.js',
+		'jquery.prettyPhoto.js',
+		'jquery.scrollUp.min.js',
 		'bootstrap.min.js',
 		'contact.js',
 		'gmaps.js',
 		'html5shiv.js',
-		'jquery.js',
-		'jquery.prettyPhoto.js',
-		'jquery.scrollUp.min.js',
 		'main.js',
-		'price-range.js',
+		'price-range.js'
 	],'public/js/all.js');
+
+	mix.scripts(['jquery.js','cart.js'],'public/js/cart.js');
 
 	mix.scripts([
 		'lightbox.js'
@@ -46,7 +48,8 @@ elixir(function(mix) {
     	'public/css/all.css',
     	'public/js/all.js',
     	'public/css/lightbox.css',
-    	'public/js/lightbox.js'
+    	'public/js/lightbox.js',
+    	'public/js/cart.js'
     ]);
 
     mix.copy('resources/assets/images', 'public/build/images');
