@@ -12,4 +12,9 @@ class OrderItem extends Model
     {
     	return $this->belongsTo(\CodeCommerce\OrderItem::class);
     }
+
+    public function product()
+    {
+    	return $this->belongsTo(\CodeCommerce\Product::class);	
+    }
 }
