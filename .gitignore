@@ -1,9 +1,9 @@
-/nbproject/private/
+/nbproject/private
 .idea/
-/nbproject/
+/nbproject
 /vendor
 .env
 /nbproject/project.properties
 .phpintel/
-public/uploads/*
-node_modules/
+/public/uploads
+/node_modules
