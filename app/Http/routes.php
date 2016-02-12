@@ -29,7 +29,7 @@ Route::group([],function(){
 
 Route::patterns(['category'=>'[0-9]+','product'=>'[0-9]+' ]);
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth','\CodeCommerce\Http\Middleware\CheckIsAdmin']],function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','is_admin']],function(){
     Route::group(['prefix'=>'categories'],function(){
         Route::get('/',['as'=>'categories.index', 'uses'=>'AdminCategoriesController@index']);
         Route::get('create',['as'=>'categories.create', 'uses'=>'AdminCategoriesController@create']);

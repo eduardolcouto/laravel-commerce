@@ -3,11 +3,12 @@
 @section('content')
 <section class="checkout">
 	<div class="container">
+		@if(!isset($cartEmpty))
 		<div class="jumbotron">
 		  <div class="container">
-		    <h2>Ordem criada com sucesso!!</h2>
-		    <h4>Número da Ordem: {{$order->id}}</h4>
-		    <h4>Valor da Ordem: R$ {{$order->total}}</h4>
+		    <h2>Pedido criada com sucesso!!</h2>
+		    <h4>Número do Pedido #{{$order->id}}</h4>
+		    <h4>Valor do Pedido: R$ {{$order->total}}</h4>
 		  </div>
 		</div>
 		<table class="table table-condensed">
@@ -35,6 +36,17 @@
 		    	@endforeach
 		    	</tbody>
 		    </table>
+		    @else
+
+		    @section('categories')
+				@include('store.partial.categories')
+			@stop
+			<div class="col-sm-9 padding-right">
+		    	<h2>Carrinho de compras vazio!!</h2>
+		    </div>
+
+		    @endif
+
 	</div>
 	
 </section>

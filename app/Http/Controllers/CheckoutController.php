@@ -16,7 +16,7 @@ class CheckoutController extends Controller
     {
         $this->middleware('auth');
     }
-    public function place(\CodeCommerce\Order $orderModel, \CodeCommerce\OrderItem $ordemItem)
+    public function place(\CodeCommerce\Order $orderModel, \CodeCommerce\OrderItem $ordemItem, \CodeCommerce\Category $category)
     {
     	if (!Session::has('cart')) {
     		return false;
@@ -35,7 +35,13 @@ class CheckoutController extends Controller
     				'qtd' => $item['qtd']
     			]);
     		}
+            $cart->clear();
+
+            return view('store.checkout',compact('order'));
     	}
-         return view('store.checkout',compact('order'));
+
+        $categories = $category->all();
+
+        return view('store.checkout',['cartEmpty' => true,'categories' => $categories]);
     }
 }
