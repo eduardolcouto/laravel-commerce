@@ -1,0 +1,18 @@
+To: Eduardo Couto <eduardo.lcouto@gmail.com>
+Subject: Pedido Recebido!!
+Message-ID: <5b913aec5303a2839ff9062de27161b3@localhost>
+Date: Tue, 16 Feb 2016 13:46:14 +0000
+From: Loja Laravel <loja@localhost.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Ol=C3=A1 Eduardo Couto,
+
+Seu pedido #43 foi realizado com sucesso.
+
+Ele est=C3=A1 em analise de pagamento, assim que for aprovado voc=C3=AA rec=
+eber=C3=A1 um novo status.
+
+Agradecemos a sua prefer=C3=AAncia,
+

@@ -37,6 +37,8 @@ class CheckoutController extends Controller
     		}
             $cart->clear();
 
+            event(new \CodeCommerce\Events\CheckoutEvent(Auth::user(), $order));
+
             return view('store.checkout',compact('order'));
     	}
 

@@ -16,16 +16,30 @@ Route::group([],function(){
     Route::get('category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
     Route::get('product/{product}', ['as'=>'show.product','uses'=>'StoreController@product']);
     Route::get('tag/{tag}', ['as'=>'show.tag.products','uses'=>'StoreController@tagProducts']);
-    
-    Route::get('cart', ['as'=>'cart','uses'=>'CartController@index']);
-    Route::get('cart/add/{id}', ['as'=>'cart.add','uses'=>'CartController@add']);
-    Route::get('cart/remove/{id}', ['as'=>'cart.remove','uses'=>'CartController@remove']);
-    Route::get('cart/destroy/{id}', ['as'=>'cart.destroy','uses'=>'CartController@destroy']);
 
-    Route::get('checkout/order-place', ['as'=>'checkout.orderPlace','uses'=>'CheckoutController@place']);
+    Route::group(['prefix'=>'cart'],function(){
+        Route::get('/', ['as'=>'cart','uses'=>'CartController@index']);
+        Route::get('/add/{id}', ['as'=>'cart.add','uses'=>'CartController@add']);
+        Route::get('/remove/{id}', ['as'=>'cart.remove','uses'=>'CartController@remove']);
+        Route::get('/destroy/{id}', ['as'=>'cart.destroy','uses'=>'CartController@destroy']);
+        
+    });
+    
+    
+
+    Route::group(['middleware' => 'auth'], function(){
+        
+
+        Route::get('checkout/order-place', ['as'=>'checkout.orderPlace','uses'=>'CheckoutController@place']);
+
+        Route::get('account/orders/', ['as'=>'account.orders','uses'=>'AccountController@orders']);
+
+        Route::get('user/address/create', ['as'=>'user.address','uses'=>'UserController@createAddress']);
+
+    });
+
 
 });
-
 
 Route::patterns(['category'=>'[0-9]+','product'=>'[0-9]+' ]);
 
@@ -63,5 +77,9 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
     'teste' => 'TesteController'
 ]);
+
+Route::get('evento',function(){
+    event(new \CodeCommerce\Events\CheckoutEvent());
+});
 
 

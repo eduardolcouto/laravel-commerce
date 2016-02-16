@@ -39,6 +39,17 @@ class User extends Model implements AuthenticatableContract,
 
     public function orders()
     {
-        return $this->hasManyy(CodeCommerce\Order::class);
+        return $this->hasMany(\CodeCommerce\Order::class);
+    }
+
+    public function address()
+    {
+        return $this->hasMany(\CodeCommerce\AddressUser::class);
+    }
+
+    public function getFirstNameAttribute()
+    {
+        $array = explode(" ",$this->name);
+        return $array[0];
     }
 }
