@@ -39,6 +39,7 @@ elixir(function(mix) {
 	],'public/js/all.js');
 
 	mix.scripts(['jquery.js','cart.js'],'public/js/cart.js');
+	mix.scripts(['jquery.js','address.js'],'public/js/address.js');
 
 	mix.scripts([
 		'lightbox.js'
@@ -49,7 +50,8 @@ elixir(function(mix) {
     	'public/js/all.js',
     	'public/css/lightbox.css',
     	'public/js/lightbox.js',
-    	'public/js/cart.js'
+    	'public/js/cart.js',
+    	'public/js/address.js'
     ]);
 
     mix.copy('resources/assets/images', 'public/build/images');

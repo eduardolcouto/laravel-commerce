@@ -12,16 +12,19 @@
 */
 
 Route::group([],function(){
+
     Route::get('/', ['as'=>'home','uses'=>'StoreController@index']);
     Route::get('category/{category}', ['as'=>'show.category.products','uses'=>'StoreController@categoryProducts']);
     Route::get('product/{product}', ['as'=>'show.product','uses'=>'StoreController@product']);
     Route::get('tag/{tag}', ['as'=>'show.tag.products','uses'=>'StoreController@tagProducts']);
+
 
     Route::group(['prefix'=>'cart'],function(){
         Route::get('/', ['as'=>'cart','uses'=>'CartController@index']);
         Route::get('/add/{id}', ['as'=>'cart.add','uses'=>'CartController@add']);
         Route::get('/remove/{id}', ['as'=>'cart.remove','uses'=>'CartController@remove']);
         Route::get('/destroy/{id}', ['as'=>'cart.destroy','uses'=>'CartController@destroy']);
+
         
     });
     
@@ -34,7 +37,11 @@ Route::group([],function(){
 
         Route::get('account/orders/', ['as'=>'account.orders','uses'=>'AccountController@orders']);
 
-        Route::get('user/address/create', ['as'=>'user.address','uses'=>'UserController@createAddress']);
+        Route::get('account/address/create', ['as'=>'account.address','uses'=>'AccountController@createAddress']);
+
+        Route::post('account/address/save', ['as'=>'account.address.save','uses'=>'AccountController@saveAddress']);
+
+        Route::get('account',['as' => 'account','uses' => 'AccountController@index']);
 
     });
 

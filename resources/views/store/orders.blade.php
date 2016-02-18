@@ -17,7 +17,6 @@
 			<ul>
 			@foreach($order->items as $item)
 				<li>
-					<img src="{{$item->product->present()->imageFullName}}" alt="" width="80">
 					<p>
 						<a href="{{route('show.product',['id' => $item->product->id ])}}">{{$item->product->name}}</a>
 					</p>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AddressUser extends Model
 {
-    protected $fillables = [
+    protected $fillable = [
     	'user_id',
     	'type',
     	'address',
@@ -20,4 +20,6 @@ class AddressUser extends Model
     {
     	return $this->belongsTo(\CodeCommerce\User::class);
     }
+
+    
 }
