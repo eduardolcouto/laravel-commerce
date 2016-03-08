@@ -30,5 +30,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \CodeCommerce\Http\Middleware\RedirectIfAuthenticated::class,
         'is_admin' => \CodeCommerce\Http\Middleware\CheckIsAdmin::class,
+        'exists_address' => \CodeCommerce\Http\Middleware\CheckExistsAddress::class,
     ];
 }

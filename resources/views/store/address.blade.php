@@ -7,6 +7,7 @@
 	{!! Form::open(['route'=>'account.address.save']) !!}
 
 	{!! Form::hidden('user_id',$user->id, ['class'=>'form-control']) !!}
+	{!! Form::hidden('redirect_to',$redirect_to, ['class'=>'form-control']) !!}
 	<fieldset>
 		<legend>
 			<h3>Delivery Address</h3>

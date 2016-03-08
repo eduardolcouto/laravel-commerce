@@ -7,3 +7,5 @@
 .phpintel/
 /public/uploads
 /node_modules
+/nbproject/project.xml
+.settings/

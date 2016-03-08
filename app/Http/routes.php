@@ -33,11 +33,11 @@ Route::group([],function(){
     Route::group(['middleware' => 'auth'], function(){
         
 
-        Route::get('checkout/order-place', ['as'=>'checkout.orderPlace','uses'=>'CheckoutController@place']);
+        Route::get('checkout/order-place', ['as'=>'checkout.orderPlace','uses'=>'CheckoutController@place', 'middleware' => 'exists_address']);
 
         Route::get('account/orders/', ['as'=>'account.orders','uses'=>'AccountController@orders']);
 
-        Route::get('account/address/create', ['as'=>'account.address','uses'=>'AccountController@createAddress']);
+        Route::get('account/address/create/{redirect_to?}', ['as'=>'account.address','uses'=>'AccountController@createAddress']);
 
         Route::post('account/address/save', ['as'=>'account.address.save','uses'=>'AccountController@saveAddress']);
 
@@ -74,6 +74,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','is_admin']],function(){
         Route::post('{product}/images/store',['as'=>'products.images.store', 'uses'=>'AdminProductsController@storeImages']);
         Route::get('{productImage}/images/destroy',['as'=>'products.images.destroy', 'uses'=>'AdminProductsController@destroyImages']);
 
+    });
+
+    Route::group(['prefix'=>'orders'],function(){     
+        Route::get('/',['as'=>'orders.index', 'uses'=>'AdminOrdersController@index']);
     });
 
 });

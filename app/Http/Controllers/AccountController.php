@@ -24,10 +24,10 @@ class AccountController extends Controller
     	return view('store.orders',compact('orders'));
     }
 
-     public function createAddress()
+     public function createAddress($redirect_to = null)
     {
     	$user = Auth::user();
-    	return view('store.address',compact('user'));
+    	return view('store.address',compact('user','redirect_to'));
     }
 
     public function saveAddress(Request $request, \CodeCommerce\AddressUser $addressUser)
@@ -61,8 +61,14 @@ class AccountController extends Controller
     		]);
     	}
 
-    	return redirect()->route('account');
-
-
+        switch ($request->get('redirect_to')) {
+            case 'checkout':
+                return redirect()->route('checkout.orderPlace');
+                break;
+            
+            default:
+                return redirect()->route('account');
+                break;
+        }    	
     }
 }
