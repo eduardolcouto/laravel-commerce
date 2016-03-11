@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
             'name'=>'Eduardo Couto',
             'email'=>'eduardo.lcouto@gmail.com',
             'password'=>bcrypt('123456'),
+            'is_admin'=>'S'
         ]);
         factory(\CodeCommerce\User::class,5)->create();
     }

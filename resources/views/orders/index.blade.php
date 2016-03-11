@@ -9,6 +9,7 @@
         <th>Items</th>
         <th>Total</th>
         <th>Status</th>
+        <th></th>
     </tr>
     @foreach($orders as $order)
     <tr>
@@ -27,34 +28,10 @@
         </td>
         <td>{{$order->total}}</td>
         <td>
-            <?php
-                switch ($order->status) {
-                    case 0:
-                        echo 'Aguardando Pagamento';
-                        break;
-
-                    case 1:
-                        echo 'Em Separação No estoque';
-                        break;
-
-                    case 2:
-                        echo 'Em transporte';
-                        break;
-
-                    case 3:
-                        echo 'Entregue';
-                        break;
-
-                    case 3:
-                        echo 'Cancelado';
-                        break;
-
-                    default:
-                        # code...
-                        break;
-                }
-            ?>
+               {{ $order->statusOrder->name }}
+                   
         </td>
+        <td><a href="{{route('orders.edit',['id'=>$order->id])}}" class="btn btn-sm btn-warning">Change Status</a></td>
     </tr>
     @endforeach
 </table>

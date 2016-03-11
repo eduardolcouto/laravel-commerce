@@ -17,4 +17,9 @@ class Order extends Model
     {
     	return $this->hasMany(\CodeCommerce\OrderItem::class);
     }
+
+    public function statusOrder()
+    {
+    	return $this->belongsTo(\CodeCommerce\StatusOrder::class,'status_id','id');
+    }
 }

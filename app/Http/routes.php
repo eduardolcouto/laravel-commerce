@@ -78,6 +78,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','is_admin']],function(){
 
     Route::group(['prefix'=>'orders'],function(){     
         Route::get('/',['as'=>'orders.index', 'uses'=>'AdminOrdersController@index']);
+        Route::get('/edit/{id}',['as'=>'orders.edit', 'uses'=>'AdminOrdersController@edit']);
+        Route::put('/update/{id}',['as'=>'orders.update', 'uses'=>'AdminOrdersController@update']);
     });
 
 });

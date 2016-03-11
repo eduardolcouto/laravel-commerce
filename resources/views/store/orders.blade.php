@@ -25,7 +25,7 @@
 			</ul>
 		</td>
 		<td>{{$order->total}}</td>
-		<td>{{$order->status}}</td>
+		<td>{{$order->statusOrder->name}}</td>
 	</tr>
 	@endforeach
 </table>
