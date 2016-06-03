@@ -96,3 +96,4 @@ Route::get('evento',function(){
 });
 
 
+Route::get('test','CheckoutController@test');
